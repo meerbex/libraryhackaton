@@ -82,8 +82,7 @@ class AuthContexProvider extends Component {
   }
 
   getCategories = async () => {
-    const userId = await getCategoriesApi()
-    this.setState({ user: { userId } })
+    return await getCategoriesApi()
   }
 
   getSettings = async () => {
