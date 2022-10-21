@@ -13,13 +13,19 @@ const AdminWrapper = ({ component: Component, ...rest }) => {
 
             
               <div className="title-write">
-              <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i> Profile</a>
+              <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Профиль</a>
               </div>
               <div className="title-write">
-              <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>My Books</a>
+              <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
               </div>
               <div className="title-write">
-              <a href="/my_likes"><i className="fa fa-fw fa-bar-chart mr-1"></i>My Likes</a>
+              <a href="/my_borrowed_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги</a>
+              </div>
+              <div className="title-write">
+              <a href="/my_expired_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги</a>
+              </div>
+              <div className="title-write">
+              <a href="/my_pending_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги</a>
               </div>
               <div className="title-write">
                 <a href="/chat"><i className="fa fa-fw fa-bar-chart mr-1"></i>My Chats</a>

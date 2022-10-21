@@ -178,7 +178,7 @@ class AuthContexProvider extends Component {
       postBook,
       getBook,
       patchBook,
-      deleteBook
+      deleteBook,
     } = this
     return (
       <Provider
@@ -206,7 +206,7 @@ class AuthContexProvider extends Component {
           postBook,
           getBook,
           patchBook,
-          deleteBook
+          deleteBook,
         }}
       >
         {this.props.children}

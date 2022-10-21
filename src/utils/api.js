@@ -136,6 +136,26 @@ export async function getBooks(params={"search":'ewrw'}) {
   return book;
 }
 
+export async function getMyBorrowedBooks() {
+  const path = `/books/owned?getMyBooks=true`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getMyPendingBooks() {
+  const path = `/books/reservations?getMyBooks=true`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getMyExpiredBooks() {
+  const path = `/books/expired?getMyBooks=true`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
 
 export async function postQuestion ({ title, body }) {
   const path = '/questions';

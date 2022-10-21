@@ -21,6 +21,9 @@ import Appointments from './pages/Appointments';
 import Map from './pages/Map';
 import Details from './components/Details';
 import SearchPage from './pages/SearchPage';
+import BorrowedBooks from "./pages/BorrowedBooks";
+import ExpiredBooks from "./pages/ExpiredBooks";
+import PendingBooks from "./pages/PendingBooks";
 
 function Routes() {
     return (
@@ -73,6 +76,27 @@ function Routes() {
                         component={MyBooks}
                     
                     />
+                    <RouteGuard
+                        exact
+                        path="/my_borrowed_books"
+                        component={BorrowedBooks}
+                    
+                    />
+
+                    <RouteGuard
+                        exact
+                        path="/my_expired_books"
+                        component={ExpiredBooks}
+                    
+                    />
+
+                    <RouteGuard
+                        exact
+                        path="/my_pending_books"
+                        component={PendingBooks}
+                    
+                    />
+
                     <RouteGuard
                         exact
                         path="/my_likes"
