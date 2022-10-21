@@ -10,6 +10,8 @@ const SearchPage = (props) => {
   const [books, setBooks] = useState([])
   const search = useLocation().search;
   const searching = new URLSearchParams(search).get('search');
+  const category = new URLSearchParams(search).get('category');
+  
   useEffect( () => {
     
     console.log("this.props", searching)
@@ -18,7 +20,18 @@ const SearchPage = (props) => {
       setBooks(comingbooks);
     }
 
-    fetchMyAPI()
+    
+    async function fetchByCategory() {
+      const comingbooks = await context.getBooks({ category: category })
+      setBooks(comingbooks);
+    }
+    if (category) {
+      fetchByCategory()
+    }else{
+      fetchMyAPI()
+    }
+
+    
     
   }, [])
   
@@ -33,7 +46,7 @@ const SearchPage = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mb-6">
-              <h3 className="mb-0">Поиск</h3>
+              <h3 className="mb-0"> {searching ? 'Результаты поиска "' + searching + '"' : ""} {category ? 'Результаты по жанру "' + category + '"' : ""}</h3>
             </div>
           </div>
           <div className="row row-cols-lg-4 row-cols-1 row-cols-md-2 g-4">

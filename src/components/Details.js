@@ -10,7 +10,8 @@ function Details() {
   const [book, setBook] = useState({})
   const Book = async (id) => {
     const date = new Date();
-    const days = context.MaxDays;
+    const days = context.maxDays;
+    console.log('days',days);
     date.setDate(date.getDate() + days);
     date.setMinutes(date.getMinutes() - 10);
     try {
