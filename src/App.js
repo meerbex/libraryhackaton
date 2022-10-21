@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import { useState, useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
+import io from 'socket.io-client';
+import Routers from './routes'
+import { setAuthToken } from './helpers/setAuthToken'
+const socket = io("https://hackaton-round2.herokuapp.com/");
 
 function App() {
+  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [lastPong, setLastPong] = useState(null);
+
+  // useEffect(() => {
+  //   socket.on('connect', () => {
+  //     console.log('connnnnnection')
+  //     setIsConnected(true);
+  //   });
+
+  //   socket.on('disconnect', () => {
+  //     setIsConnected(false);
+  //   });
+
+  //   return () => {
+  //     socket.off('connect');
+  //     socket.off('disconnect');
+  //     socket.off('pong');
+  //   };
+  // }, []);
+
+  //check jwt token
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthToken(token);
+    }
+  }, [])
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routers />
     </div>
   );
 }

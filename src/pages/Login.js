@@ -1,0 +1,77 @@
+import React, { useState} from "react";
+import axios from "axios";
+import { setAuthToken } from "../helpers/setAuthToken"
+import { AuthContext } from "../contexts/AuthContext";
+import { Redirect, Route } from 'react-router-dom';
+
+function Login() {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const context = React.useContext(AuthContext);
+  const handleSubmit = () => {
+    //reqres registered sample user
+    
+    // console.log(loginPayload)
+
+
+    try {
+      context.loginUser({ email, password })
+      // history.push("/")
+      window.location.href = '/';
+
+      // return (<Redirect to={{ pathname: '/' }} />)
+    } catch (err) {
+      console.log("Something went wrong", err);
+    }
+
+  
+  };
+
+  return (
+    
+    <div className="login-register-page-area ">
+      <div className="container">
+        <div className="row ">
+          <div className="col-lg-6 m-auto mt-5">
+            <div className="login-content">
+              <div className="login-header mb-4">
+                <h5>LOG IN YOUR ACCOUNT</h5>
+              </div>
+
+              
+              <form action="#"
+                onSubmit={(event) => {
+                  
+                  event.preventDefault()
+                  const [email, password] = event.target.children;
+                  handleSubmit(email, password);
+                }}
+              >
+                <input type="text" onChange={e=>setEmail(e.target.value)} id="email" name="email" placeholder="Email" />
+                <input type="password" onChange={e => setPassword(e.target.value)} id="password" name="password" placeholder="Password" />
+                <div className="remember-forget-wrap mb-30">
+                  {/* <div className="remember-wrap">
+                    <input type="checkbox" />
+                    <p>Remember</p>
+                    <span className="checkmark" />
+                  </div> */}
+                  <div className="forget-wrap">
+                    <a href="#">Forgot your password?</a>
+                  </div>
+                </div>
+                <button type="submit" className="btn btn-primary btn-large">Log in</button>
+                <div className="member-register mt-5">
+                  <p> Not a member? <a href="/register"> Register now</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  );
+}
+export default Login
