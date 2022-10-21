@@ -38,6 +38,12 @@ function App() {
     if (token) {
       setAuthToken(token);
     }
+    async function fetchMyAPI() {
+      const categories = await context.getCategories()
+      // setBook(comingbooks);
+      console.log("comingbook", categories)
+    }
+    fetchMyAPI()
   }, [])
 
 

@@ -147,6 +147,19 @@ export async function getBooks(params={"search":'ewrw'}) {
 }
 
 
+export async function getCategories() {
+  const path = `/books/categories/count`;
+  const withCredentials = false;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getSettings() {
+  const path = `/settings`;
+  const withCredentials = false;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
 export async function postQuestion ({ title, body }) {
   const path = '/questions';
   const withCredentials = true;

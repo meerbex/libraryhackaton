@@ -13,6 +13,8 @@ import {
   postBook as postBookApi,
   patchBook as patchBookApi,
   getBook as getBookApi,
+  getCategories as getCategoriesApi,
+  getSettings as getSettingsApi,
   getBooks as getBooksApi,
   reserveBook as reserveBookApi,
   getUserNotifications as getUserNotificationsApi,
@@ -78,6 +80,16 @@ class AuthContexProvider extends Component {
     this.setState({user: {userId}})
   }
 
+  getCategories = async () => {
+    const userId = await getCategoriesApi()
+    this.setState({ user: { userId } })
+  }
+
+  getSettings = async () => {
+    const userId = await getSettingsApi()
+    this.setState({ user: { userId } })
+  }
+
   sendCode = async ({ username, email, password }) => {
     return await sendCodeApi({ username, email, password })
     // this.setState({ user: { userId } })
@@ -132,7 +144,7 @@ class AuthContexProvider extends Component {
     }
   }
 
-
+  
 
   
   postBook = async (data) => {
@@ -178,7 +190,9 @@ class AuthContexProvider extends Component {
       recoverPassword,
       postBook,
       reserveBook,
-      getBook
+      getBook,
+      getCategories,
+      getSettings,
     } = this
     return (
       <Provider
@@ -207,7 +221,9 @@ class AuthContexProvider extends Component {
           recoverPassword,
           postBook,
           getBook,
-          reserveBook
+          reserveBook,
+          getCategories,
+          getSettings
         }}
       >
         {this.props.children}
