@@ -88,6 +88,12 @@ function Routes() {
                     />
                     <RouteGuard
                         exact
+                        path="/editBook/:id"
+                        component={EditBook}
+                    
+                    />
+                    <RouteGuard
+                        exact
                         path="/appointment"
                         component={Appointments}
 

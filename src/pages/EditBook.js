@@ -6,9 +6,10 @@ import Dropzone from '../components/Dropzone';
 import '/node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import { AuthContext } from "../contexts/AuthContext";
+import { useLocation, useParams, withRouter } from 'react-router-dom';
 
 
-export default class EditBook extends Component {
+class EditBook extends Component {
 
   static contextType = (AuthContext);
   constructor(props) {
@@ -86,6 +87,19 @@ export default class EditBook extends Component {
 
   }
 
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    if (id) {
+      console.log('dsadas')
+      const {bookId, updatedAt, createdAt, ...book} = await this.context.getBook({bookId: id})
+      console.log(book)
+      this.setState({
+        title: book.title,
+        description: book.description,
+      })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -160,7 +174,7 @@ export default class EditBook extends Component {
                         <div className="dropimages" style={{ display: 'flex' }}>
                           {
                             
-                          this.state.imageUrl.length?
+                          this.state.imageUrl?.length?
                               <img src={this.state.imageUrl} width="200px" alt="" />
                           :
                           <></>
@@ -188,3 +202,5 @@ export default class EditBook extends Component {
     )
   }
 }
+
+export default withRouter(EditBook);
