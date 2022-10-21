@@ -19,7 +19,7 @@ function  Login() {
       const result = await context.loginUser({ email, password })
       console.log('result', result)
       // history.push("/")
-      // window.location.href = '/profile';
+      window.location.href = '/profile';
 
       // return (<Redirect to={{ pathname: '/' }} />)
     } catch (err) {
