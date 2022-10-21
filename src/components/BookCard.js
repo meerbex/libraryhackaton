@@ -5,7 +5,7 @@ export default function BookCard({ book }) {
   const context = React.useContext(AuthContext);
   const Book = async (id) => {
     const date = new Date();
-    const days = context.MaxDays;
+    const days = context.maxDays;
     date.setDate(date.getDate() + days);
     date.setMinutes(date.getMinutes() - 10);
     try {

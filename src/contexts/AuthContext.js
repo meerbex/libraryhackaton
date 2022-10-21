@@ -34,8 +34,8 @@ class AuthContexProvider extends Component {
       show: false,
       modalTitle: '',
       modalBody: '',
-      MaxBooks: 5,
-      MaxDays: 5,
+      maxBooks: 5,
+      maxDays: 5,
     }
   }
 
@@ -86,8 +86,7 @@ class AuthContexProvider extends Component {
   }
 
   getSettings = async () => {
-    const userId = await getSettingsApi()
-    this.setState({ user: { userId } })
+    return await getSettingsApi()
   }
 
   sendCode = async ({ username, email, password }) => {
@@ -175,7 +174,7 @@ class AuthContexProvider extends Component {
  }
 
   render() {
-    const { user, notifications, show, modalBody, modalTitle, MaxBooks, MaxDays } = this.state;
+    const { user, notifications, show, modalBody, modalTitle, maxBooks, maxDays } = this.state;
     const {
       loginUser,
       updateState, 
@@ -208,8 +207,8 @@ class AuthContexProvider extends Component {
           show,
           modalTitle,
           modalBody,
-          MaxDays,
-          MaxBooks,
+          maxDays,
+          maxBooks,
           loginUser,
           updateState,
           identifyUser,

@@ -39,9 +39,10 @@ function App() {
       setAuthToken(token);
     }
     async function fetchMyAPI() {
-      const categories = await context.getCategories()
-      // setBook(comingbooks);
-      console.log("comingbook", categories)
+      const settings = await context.getSettings();
+      settings.forEach(setting => {
+        context.updateState(setting.name, setting.value)
+      });
     }
     fetchMyAPI()
   }, [])
