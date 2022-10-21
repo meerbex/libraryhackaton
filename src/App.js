@@ -52,9 +52,8 @@ function App() {
         <Modal.Body>{context.modalBody}</Modal.Body>
         <Modal.Footer>
           <a className="btn btn-secondary" onClick={() => context.updateState('show', false)}>
-            Close
+            Закрыть
           </a>
-
         </Modal.Footer>
       </Modal>
 

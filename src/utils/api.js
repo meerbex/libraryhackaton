@@ -19,7 +19,9 @@ async function _fetch (path, options, withCredentials) {
   const response = await fetch(url, options);
   if (!response.ok){
     // return { 'error':'Internal server error'}
-    throw new Error("Internal server error");
+    const error = new Error('custom error');
+    error.json = await response.json()
+    throw error
   }
   
   response.headers.forEach(console.log);
@@ -126,6 +128,14 @@ export async function getBook({ bookId }) {
   const book = await _getData(path, withCredentials);
   return book;
 }
+
+export async function reserveBook({ bookId, endTime }) {
+  const path = '/books/reservations';
+  const withCredentials = true;
+  const questionId = await _postData(path, { bookId, endTime }, withCredentials);
+  return questionId;
+}
+
 
 
 export async function getBooks(params={"search":'ewrw'}) {
