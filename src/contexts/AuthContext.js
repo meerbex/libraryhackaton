@@ -26,7 +26,11 @@ class AuthContexProvider extends Component {
     super(props)
     this.state = {
       user: {},
-      notifications: []
+      notifications: [],
+      show: false,
+      modalTitle: '',
+      modalBody: '',
+
     }
   }
 
@@ -149,7 +153,7 @@ class AuthContexProvider extends Component {
  
 
   render() {
-    const {user, notifications} = this.state;
+    const { user, notifications, show, modalBody, modalTitle } = this.state;
     const {
       loginUser,
       updateState, 
@@ -175,6 +179,9 @@ class AuthContexProvider extends Component {
         value={{ 
           user,
           notifications,
+          show,
+          modalTitle,
+          modalBody,
           loginUser,
           updateState,
           identifyUser,
