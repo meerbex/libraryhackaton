@@ -24,6 +24,9 @@ import SearchPage from './pages/SearchPage';
 import BorrowedBooks from "./pages/BorrowedBooks";
 import ExpiredBooks from "./pages/ExpiredBooks";
 import PendingBooks from "./pages/PendingBooks";
+import ExpiredBooksAdmin from "./pages/ExpiredBooksAdmin";
+import ProfilePageAnother from "./pages/ProfilePageAnother";
+import PendingBooksAdmin from "./pages/PendingBooksAdmin";
 
 function Routes() {
     return (
@@ -63,6 +66,12 @@ function Routes() {
                         path="/profile"
                         component={ProfilePage}
                     />
+
+                    <RouteGuard
+                        exact
+                        path="/profile/:id"
+                        component={ProfilePageAnother}
+                    />
                     
                     <RouteGuard
                         exact
@@ -94,6 +103,28 @@ function Routes() {
                         exact
                         path="/my_pending_books"
                         component={PendingBooks}
+                    
+                    />
+
+                    <RouteGuard
+                        exact
+                        path="/expired_books_admin"
+                        component={ExpiredBooksAdmin}
+                    
+                    />
+
+                    <RouteGuard
+                        exact
+                        path="/borrowed_books_admin"
+                        component={ExpiredBooksAdmin}
+                    
+                    />
+
+                    
+                    <RouteGuard
+                        exact
+                        path="/pending_books_admin"
+                        component={PendingBooksAdmin}
                     
                     />
 

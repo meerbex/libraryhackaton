@@ -167,6 +167,27 @@ export async function getMyExpiredBooks() {
   return book;
 }
 
+export async function getExpiredBooks() {
+  const path = `/books/expired`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getPendingBooks() {
+  const path = `/books/reservations`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getBorrowedBooks() {
+  const path = `/books/owned`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
 export async function getCategories() {
   const path = `/books/categories/count`;
   const withCredentials = false;
