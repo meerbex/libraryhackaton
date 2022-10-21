@@ -113,8 +113,8 @@ export async function postBook(data) {
   return bookId;
 }
 
-export async function patchBook(data) {
-  const path = '/books';
+export async function patchBook(id, data) {
+  const path = `/books/${id}`;
   const withCredentials = true;
   const bookId = await _patchData(path, data, withCredentials);
   return bookId;

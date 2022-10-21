@@ -128,8 +128,8 @@ class AuthContexProvider extends Component {
     const bookId = await postBookApi(data)
   }
 
-  patchBook = async (data) => {
-    const bookId = await patchBookApi(data)
+  patchBook = async (id, data) => {
+    const bookId = await patchBookApi(id, data)
   }
 
   getBook = async ({bookId}) => {
@@ -167,7 +167,8 @@ class AuthContexProvider extends Component {
       getCurrentUserNotifications,
       recoverPassword,
       postBook,
-      getBook
+      getBook,
+      patchBook
     } = this
     return (
       <Provider
@@ -190,7 +191,8 @@ class AuthContexProvider extends Component {
           getCurrentUserNotifications,
           recoverPassword,
           postBook,
-          getBook
+          getBook,
+          patchBook
         }}
       >
         {this.props.children}

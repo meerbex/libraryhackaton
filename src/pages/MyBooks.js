@@ -48,7 +48,7 @@ export default function MyBooks() {
                   <td>{book.description.substring(0, 200)}...</td>
                   <td>{book.category}</td>
                   <td>
-                    <a href="#editEmployeeModal" className="edit" data-toggle="modal"><i className="fa fa-edit" title="Edit"></i> Edit</a>
+                    <a href={"/editBook/"+ book?.id} className="edit" data-toggle="modal"><i className="fa fa-edit" title="Edit"></i> Edit</a>
                     <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="fa fa-trash" title="Delete"></i></a>
                   </td>
                 </tr>

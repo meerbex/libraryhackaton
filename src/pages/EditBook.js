@@ -82,7 +82,13 @@ class EditBook extends Component {
 
     this.submitBlock = (e)=>{
       e.preventDefault()
-      this.context.postBook(this.state)
+      const { id } = this.props.match.params;
+      if (id) {
+        this.context.patchBook(id, this.state)
+      }
+      else {
+        this.context.postBook(this.state)
+      }
     }
 
   }
@@ -91,12 +97,8 @@ class EditBook extends Component {
     const { id } = this.props.match.params;
     if (id) {
       console.log('dsadas')
-      const {bookId, updatedAt, createdAt, ...book} = await this.context.getBook({bookId: id})
-      console.log(book)
-      this.setState({
-        title: book.title,
-        description: book.description,
-      })
+      const {description, updatedAt, createdAt, ...book} = await this.context.getBook({bookId: id})
+      this.setState(book)
     }
   }
 
