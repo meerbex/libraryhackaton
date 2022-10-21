@@ -115,8 +115,8 @@ export async function postBook(data) {
   return bookId;
 }
 
-export async function patchBook(data) {
-  const path = '/books';
+export async function patchBook(id, data) {
+  const path = `/books/${id}`;
   const withCredentials = true;
   const bookId = await _patchData(path, data, withCredentials);
   return bookId;
@@ -146,6 +146,47 @@ export async function getBooks(params={"search":'ewrw'}) {
   return book;
 }
 
+export async function getMyBorrowedBooks() {
+  const path = `/books/owned?getMyBooks=true`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getMyPendingBooks() {
+  const path = `/books/reservations?getMyBooks=true`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getMyExpiredBooks() {
+  const path = `/books/expired?getMyBooks=true`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getExpiredBooks() {
+  const path = `/books/expired`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getPendingBooks() {
+  const path = `/books/reservations`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
+
+export async function getBorrowedBooks() {
+  const path = `/books/owned`;
+  const withCredentials = true;
+  const book = await _getData(path, withCredentials);
+  return book;
+}
 
 export async function getCategories() {
   const path = `/books/categories/count`;
@@ -201,6 +242,13 @@ export async function deleteQuestion ({questionId}) {
   const withCredentials = true;
   const deletedQuestionsCount = await _deleteData(path, withCredentials);
   return deletedQuestionsCount;
+}
+
+export async function deleteBook ({bookId}) {
+  const path = `/books/${bookId}`;
+  const withCredentials = true;
+  const deletedBooksCount = await _deleteData(path, withCredentials);
+  return deletedBooksCount;
 }
 
 export async function putQuestion ({questionId, body, title}) {

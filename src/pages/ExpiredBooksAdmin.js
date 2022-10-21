@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext';
-import { deleteBook } from '../utils/api';
+import { getExpiredBooks } from '../utils/api';
 
-export default function MyBooks() {
+export default function ExpiredBooksAdmin() {
   const context = React.useContext(AuthContext);
 
   const [books, setBooks] = useState([])
   useEffect(() => {
 
     async function fetchMyAPI() {
-      const comingbooks = await context.getBooks({'search':''})
+      const comingbooks = await getExpiredBooks()
       setBooks(comingbooks);
     }
 
     fetchMyAPI()
   }, [])
-
-  const onDelete = async (bookId) => {
-    await deleteBook({ bookId })
-    const comingbooks = await context.getBooks({'search':''})
-    setBooks(comingbooks);
-  }
 
   console.log(books);
   return (
@@ -45,20 +39,17 @@ export default function MyBooks() {
                   <th>Title</th>
                   <th>Description</th>
                   <th>Category</th>
-                  <th>Actions</th>
+                  <th>User</th>
                 </tr>
               </thead>
               <tbody>
                 {books.map((book) => (
                   <tr>
-                  <td><img src={book.imageUrl} width="100px"/></td>
-                  <td>{book.title}</td>
-                  <td>{book.description.substring(0, 200)}...</td>
-                  <td>{book.category}</td>
-                  <td>
-                    <a href={"/editBook/"+ book?.id} className="edit" data-toggle="modal"><i className="fa fa-edit" title="Edit"></i> Edit</a>
-                    <a onClick={() => onDelete(book?.id)} className="delete" data-toggle="modal"><i className="fa fa-trash" title="Delete"></i></a>
-                  </td>
+                  <td><img src={book.book.imageUrl} width="100px"/></td>
+                  <td>{book.book.title}</td>
+                  <td>{book.book.description?.substring(0, 200)}...</td>
+                  <td>{book.book.category}</td>
+                  <td><a href={`/profile/${book.user.id}`}>{book.user.username}</a></td>
                 </tr>
                 ))}
               </tbody>

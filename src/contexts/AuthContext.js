@@ -18,7 +18,8 @@ import {
   getBooks as getBooksApi,
   reserveBook as reserveBookApi,
   getUserNotifications as getUserNotificationsApi,
-  recoverPassword as recoverPassordApi
+  recoverPassword as recoverPassordApi,
+  deleteBook as deleteBookApi
 } from '../utils/api'
 
 const Context = React.createContext();
@@ -149,8 +150,8 @@ class AuthContexProvider extends Component {
     const bookId = await postBookApi(data)
   }
 
-  patchBook = async (data) => {
-    const bookId = await patchBookApi(data)
+  patchBook = async (id, data) => {
+    const bookId = await patchBookApi(id, data)
   }
 
   getBook = async ({bookId}) => {
@@ -161,6 +162,10 @@ class AuthContexProvider extends Component {
 
   getBooks = async (params) => {
     return await getBooksApi(params)
+  }
+
+  deleteBook = async (bookId) => {
+    return await deleteBookApi(bookId)
   }
 
 
@@ -187,6 +192,8 @@ class AuthContexProvider extends Component {
       getCurrentUserNotifications,
       recoverPassword,
       postBook,
+      patchBook,
+      deleteBook,
       reserveBook,
       getBook,
       getCategories,
@@ -219,6 +226,8 @@ class AuthContexProvider extends Component {
           recoverPassword,
           postBook,
           getBook,
+          patchBook,
+          deleteBook,
           reserveBook,
           getCategories,
           getSettings

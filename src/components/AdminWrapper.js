@@ -13,23 +13,29 @@ const AdminWrapper = ({ component: Component, ...rest }) => {
 
             
               <div className="title-write">
-              <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i> Profile</a>
+              <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Профиль</a>
               </div>
               <div className="title-write">
-              <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>My Books</a>
+              <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
               </div>
               <div className="title-write">
-              <a href="/my_likes"><i className="fa fa-fw fa-bar-chart mr-1"></i>My Likes</a>
+              <a href="/my_borrowed_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги</a>
               </div>
               <div className="title-write">
-                <a href="/chat"><i className="fa fa-fw fa-bar-chart mr-1"></i>My Chats</a>
+              <a href="/my_expired_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги</a>
               </div>
-            <div className="title-write">
-              <a href="/calendar"><i className="fa fa-fw fa-bar-chart mr-1"></i>Full Calendar</a>
-            </div>
-            <div className="title-write">
-              <a href="/map"><i className="fa fa-fw fa-bar-chart mr-1"></i>Map</a>
-            </div>
+              <div className="title-write">
+              <a href="/my_pending_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги</a>
+              </div>
+              <div className="title-write">
+              <a href="/borrowed_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги админ</a>
+              </div>
+              <div className="title-write">
+              <a href="/expired_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги админ</a>
+              </div>
+              <div className="title-write">
+              <a href="/pending_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги админ</a>
+              </div>
             </div>
             <div className="col-lg-9">
             <div className="share-thinking-title" style={{marginTop:30}}>
