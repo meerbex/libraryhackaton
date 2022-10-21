@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function MyBooks() {
+  const context = React.useContext(AuthContext);
+
+  const [books, setBooks] = useState([])
+  useEffect(() => {
+
+    async function fetchMyAPI() {
+      const comingbooks = await context.getBooks({'search':''})
+      setBooks(comingbooks);
+    }
+
+    fetchMyAPI()
+  }, [])
+  console.log(books);
   return (
     <div>
       <div className="container-xl">
@@ -19,7 +33,6 @@ export default function MyBooks() {
             <table className="table table-striped table-hover">
               <thead>
                 <tr>
-                  
                   <th>Photo</th>
                   <th>Title</th>
                   <th>Description</th>
@@ -28,21 +41,18 @@ export default function MyBooks() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Thomas Hardy</td>
-                  <td>thomashardy@mail.com</td>
-                  <td>89 Chiaroscuro Rd, Portland, USA</td>
-                  <td>(171) 555-2222</td>
+                {books.map((book) => (
+                  <tr>
+                  <td><img src={book.imageUrl} width="100px"/></td>
+                  <td>{book.title}</td>
+                  <td>{book.description.substring(0, 200)}...</td>
+                  <td>{book.category}</td>
                   <td>
                     <a href="#editEmployeeModal" className="edit" data-toggle="modal"><i className="fa fa-edit" title="Edit"></i> Edit</a>
                     <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="fa fa-trash" title="Delete"></i></a>
                   </td>
                 </tr>
-
-
-
-
-                
+                ))}
               </tbody>
             </table>
             <div className="clearfix">

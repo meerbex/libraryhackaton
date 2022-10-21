@@ -19,7 +19,7 @@ function Dropzone({ onDrop, accept, open, multiple }) {
             </p>
           ) : (
             <p className="dropzone-content">
-              Drag’ n’ drop some files here, or click to select files
+              Выберите изображение
             </p>
           )}
           <button type="button" onClick={open} className="btn">

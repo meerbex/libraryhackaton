@@ -14,14 +14,13 @@ export default class EditBook extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      "images":[],
       "title": "ыва ываываыва",
       "description": "",
       "category": "clothess",
+      "author": "einstein",
+      "issuer": "Transworld",
+      "quantity": 50,
       "imageUrl": "",
-      
-      "files": { "items": [] },
-      "gallery": { "items": [] }
     }
 
     this.onEditorStateChange = (description) => {
@@ -75,8 +74,14 @@ export default class EditBook extends Component {
       
     };
 
-    this.submitBlock = ()=>{
-      this.context.createBlock(this.state)
+    
+    this.onChange = (stateName, event) => {
+      this.setState({[stateName]: event.target.value})
+    }
+
+    this.submitBlock = (e)=>{
+      e.preventDefault()
+      this.context.postBook(this.state)
     }
 
   }
@@ -95,13 +100,33 @@ export default class EditBook extends Component {
                     <div className="col">
                       <div className="form-group">
                         <label>Название</label>
-                        <input className="form-control" type="text" name="name" placeholder="Название" defaultValue={this.state.title} />
+                        <input className="form-control" type="text" name="name" placeholder="Название" value={this.state.title} onChange={(e) => this.onChange('title', e)} />
                       </div>
                     </div>
                     <div className="col">
                       <div className="form-group">
                         <label>Категория</label>
-                        <input className="form-control" type="text" name="username" placeholder="Категория" defaultValue={this.state.category} />
+                        <input className="form-control" type="text" name="category" placeholder="Категория" value={this.state.category} onChange={(e) => this.onChange('category', e)}/>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="form-group">
+                        <label>Автор</label>
+                        <input className="form-control" type="text" name="author" placeholder="Автор" value={this.state.author} onChange={(e) => this.onChange('author', e)}/>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col">
+                      <div className="form-group">
+                        <label>Издатель</label>
+                        <input className="form-control" type="text" name="issuer" placeholder="Издатель" value={this.state.issuer} onChange={(e) => this.onChange('issuer', e)} />
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="form-group">
+                        <label>Количество</label>
+                        <input className="form-control" type="number" name="quantity" placeholder="Количество" value={this.state.quantity} onChange={(e) => this.onChange('quantity', e)}/>
                       </div>
                     </div>
                   </div>
@@ -130,7 +155,7 @@ export default class EditBook extends Component {
 
                     <div className="col-12 mb-3">
                       <div className="form-group">
-                        <label>Главное изооброжение</label>
+                        <label>Главное изображение</label>
                         <Dropzone multiple={false} onDrop={this.onDropImage} accept={{ 'image/*': [] }} />
                         <div className="dropimages" style={{ display: 'flex' }}>
                           {
@@ -145,55 +170,12 @@ export default class EditBook extends Component {
                       </div>
                     </div>
 
-                    <div className="col-12 mb-3">
-                      <div className="form-group">
-                        <label>Галерея изооброжений</label>
-                        <Dropzone multiple={true} onDrop={this.onDropGallery} accept={{ 'image/*': [] }} />
-                        <div className="dropimages" style={{display:'flex'}}>
-                          {
-                            this.state.gallery.items?.map(image_url => {
-                              return (
-                                <img src={image_url} width="200px" alt="" />
-                              )
-                            })
-                          }
-                        </div>
-                        
-                      </div>
-                    </div>
-
-                    <div className="col-12 mb-3">
-                      <div className="form-group">
-                        <label>Документы</label>
-                        <Dropzone multiple={true} onDrop={this.onDropDocs}  />
-                        <div className="dropimages" style={{ display: 'flex' }}>
-                          <ul>
-                            
-                          {
-                              this.state.files.items?.map(doc_url => {
-                              return (
-                                <li> 
-                                  <a href={doc_url}>{doc_url}</a>
-                                </li>
-                              )
-                            })
-                          }
-
-                          </ul>
-                        </div>
-
-                      </div>
-                    </div>
-
-
-
-                    
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col d-flex justify-content-start">
-                  <button className="btn btn-primary" type="submit">Сохранить</button>
+                  <button className="btn btn-primary" type="submit" onClick={this.submitBlock}>Сохранить</button>
                 </div>
               </div>
             </form>

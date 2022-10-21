@@ -164,7 +164,8 @@ class AuthContexProvider extends Component {
       getBooks,
       getCurrentUser,
       getCurrentUserNotifications,
-      recoverPassword
+      recoverPassword,
+      postBook,
     } = this
     return (
       <Provider
@@ -185,7 +186,8 @@ class AuthContexProvider extends Component {
           doesCurrentUserOwnAnswer,
           getCurrentUser,
           getCurrentUserNotifications,
-          recoverPassword
+          recoverPassword,
+          postBook
         }}
       >
         {this.props.children}
