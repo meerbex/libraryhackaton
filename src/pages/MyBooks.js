@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext';
+import { deleteBook } from '../utils/api';
 
 export default function MyBooks() {
   const context = React.useContext(AuthContext);
@@ -14,6 +15,13 @@ export default function MyBooks() {
 
     fetchMyAPI()
   }, [])
+
+  const onDelete = async (bookId) => {
+    await deleteBook({ bookId })
+    const comingbooks = await context.getBooks({'search':''})
+    setBooks(comingbooks);
+  }
+
   console.log(books);
   return (
     <div>
@@ -49,7 +57,7 @@ export default function MyBooks() {
                   <td>{book.category}</td>
                   <td>
                     <a href={"/editBook/"+ book?.id} className="edit" data-toggle="modal"><i className="fa fa-edit" title="Edit"></i> Edit</a>
-                    <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="fa fa-trash" title="Delete"></i></a>
+                    <a onClick={() => onDelete(book?.id)} className="delete" data-toggle="modal"><i className="fa fa-trash" title="Delete"></i></a>
                   </td>
                 </tr>
                 ))}

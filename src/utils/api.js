@@ -180,6 +180,13 @@ export async function deleteQuestion ({questionId}) {
   return deletedQuestionsCount;
 }
 
+export async function deleteBook ({bookId}) {
+  const path = `/books/${bookId}`;
+  const withCredentials = true;
+  const deletedBooksCount = await _deleteData(path, withCredentials);
+  return deletedBooksCount;
+}
+
 export async function putQuestion ({questionId, body, title}) {
   const path = `/questions/${questionId}`;
   const withCredentials = true;

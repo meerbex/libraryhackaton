@@ -15,7 +15,8 @@ import {
   getBook as getBookApi,
   getBooks as getBooksApi,
   getUserNotifications as getUserNotificationsApi,
-  recoverPassword as recoverPassordApi
+  recoverPassword as recoverPassordApi,
+  deleteBook as deleteBookApi
 } from '../utils/api'
 
 const Context = React.createContext();
@@ -146,6 +147,10 @@ class AuthContexProvider extends Component {
     return await getBooksApi(params)
   }
 
+  deleteBook = async (bookId) => {
+    return await deleteBookApi(bookId)
+  }
+
 
   updateState = (key, val) => {
     this.setState({[key]: val});
@@ -172,7 +177,8 @@ class AuthContexProvider extends Component {
       recoverPassword,
       postBook,
       getBook,
-      patchBook
+      patchBook,
+      deleteBook
     } = this
     return (
       <Provider
@@ -199,7 +205,8 @@ class AuthContexProvider extends Component {
           recoverPassword,
           postBook,
           getBook,
-          patchBook
+          patchBook,
+          deleteBook
         }}
       >
         {this.props.children}
