@@ -1,6 +1,38 @@
 import React from 'react'
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function BookCard({ book }) {
+  const context = React.useContext(AuthContext);
+  const Book = async (id) => {
+    const date = new Date();
+    const days = context.MaxDays;
+    date.setDate(date.getDate() + days);
+    date.setMinutes(date.getMinutes() - 10);
+    try {
+      const reserved = await context.reserveBook(
+        {
+          "bookId": id,
+          "endTime": date
+        }
+      )
+      context.updateState('show', true)
+      context.updateState('modalBody', 'Вы Успешно забронировали книку " ' + book.title + '"')
+
+
+      // return (<Redirect to={{ pathname: '/' }} />)
+    } catch (err) {
+      if (err?.json?.error?.message == "allowed borrowing books exceeded") {
+        context.updateState('show', true)
+        context.updateState('modalBody', 'Вы повысили количество бронируемых книг. Вы не сможете бронировать больше ')
+      }
+      else {
+        context.updateState('show', true)
+        context.updateState('modalBody', 'Что-то пошло нетак. Повторите ещё раз')
+
+      }
+    }
+
+  }
   return (
     <div className="col">
       <div className="card card-product">
@@ -18,7 +50,7 @@ export default function BookCard({ book }) {
           </div>
           <div>
             <span className="tag">
-              Фэтнэзи
+              {book?.category}
             </span>
           </div>
           <br />
@@ -52,7 +84,7 @@ export default function BookCard({ book }) {
           </div>
           <div className="d-grid mt-2">
             {book?.quantity ?
-              <a href="#!" className="btn btn-primary ">
+              <a href="#!" onClick={() => Book(book?.id)}  className="btn btn-primary ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={16}

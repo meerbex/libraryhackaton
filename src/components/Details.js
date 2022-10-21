@@ -8,9 +8,35 @@ function Details() {
   const params = useParams();
   const context = React.useContext(AuthContext);
   const [book, setBook] = useState({})
-  const Book = (id) => {
-    console.log("ud", id)
-    context.updateState('show', true)
+  const Book = async (id) => {
+    const date = new Date();
+    const days = context.MaxDays;
+    date.setDate(date.getDate() + days);
+    date.setMinutes(date.getMinutes() - 10);
+    try {
+      const reserved = await context.reserveBook(
+        {
+          "bookId": id,
+          "endTime": date
+        }
+      )
+      context.updateState('show', true)
+      context.updateState('modalBody', 'Вы Успешно забронировали книку " '+ book.title+'"')
+
+
+      // return (<Redirect to={{ pathname: '/' }} />)
+    } catch (err) {
+      if (err?.json?.error?.message == "allowed borrowing books exceeded") {
+        context.updateState('show', true)
+        context.updateState('modalBody', 'Вы повысили количество бронируемых книг. Вы не сможете бронировать больше ')
+      }
+      else{
+        context.updateState('show', true)
+        context.updateState('modalBody', 'Что-то пошло нетак. Повторите ещё раз')
+
+      }
+    }
+    
   }
   useEffect(() => {
     async function fetchMyAPI() {
@@ -33,7 +59,7 @@ function Details() {
               <div className="ps-lg-10 mt-6 mt-md-0">
 
                 <a href="#!" className="mb-4 d-block"><span className="tag">
-                  Фэтнэзи
+                  {book?.category}
                 </span></a>
 
                 <h1 className="mb-3">{book?.title} </h1>

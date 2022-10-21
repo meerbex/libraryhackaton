@@ -38,6 +38,12 @@ function App() {
     if (token) {
       setAuthToken(token);
     }
+    async function fetchMyAPI() {
+      const categories = await context.getCategories()
+      // setBook(comingbooks);
+      console.log("comingbook", categories)
+    }
+    fetchMyAPI()
   }, [])
 
 
@@ -52,9 +58,8 @@ function App() {
         <Modal.Body>{context.modalBody}</Modal.Body>
         <Modal.Footer>
           <a className="btn btn-secondary" onClick={() => context.updateState('show', false)}>
-            Close
+            Закрыть
           </a>
-
         </Modal.Footer>
       </Modal>
 

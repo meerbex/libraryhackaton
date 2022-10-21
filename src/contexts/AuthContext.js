@@ -13,7 +13,10 @@ import {
   postBook as postBookApi,
   patchBook as patchBookApi,
   getBook as getBookApi,
+  getCategories as getCategoriesApi,
+  getSettings as getSettingsApi,
   getBooks as getBooksApi,
+  reserveBook as reserveBookApi,
   getUserNotifications as getUserNotificationsApi,
   recoverPassword as recoverPassordApi,
   deleteBook as deleteBookApi
@@ -31,7 +34,8 @@ class AuthContexProvider extends Component {
       show: false,
       modalTitle: '',
       modalBody: '',
-
+      MaxBooks: 5,
+      MaxDays: 5,
     }
   }
 
@@ -77,8 +81,23 @@ class AuthContexProvider extends Component {
     this.setState({user: {userId}})
   }
 
+  getCategories = async () => {
+    const userId = await getCategoriesApi()
+    this.setState({ user: { userId } })
+  }
+
+  getSettings = async () => {
+    const userId = await getSettingsApi()
+    this.setState({ user: { userId } })
+  }
+
   sendCode = async ({ username, email, password }) => {
     return await sendCodeApi({ username, email, password })
+    // this.setState({ user: { userId } })
+  }
+
+  reserveBook = async ({ bookId, endTime }) => {
+    return await reserveBookApi({ bookId, endTime })
     // this.setState({ user: { userId } })
   }
 
@@ -126,7 +145,7 @@ class AuthContexProvider extends Component {
     }
   }
 
-
+  
 
   
   postBook = async (data) => {
@@ -155,10 +174,9 @@ class AuthContexProvider extends Component {
   updateState = (key, val) => {
     this.setState({[key]: val});
  }
- 
 
   render() {
-    const { user, notifications, show, modalBody, modalTitle } = this.state;
+    const { user, notifications, show, modalBody, modalTitle, MaxBooks, MaxDays } = this.state;
     const {
       loginUser,
       updateState, 
@@ -176,9 +194,12 @@ class AuthContexProvider extends Component {
       getCurrentUserNotifications,
       recoverPassword,
       postBook,
-      getBook,
       patchBook,
       deleteBook,
+      reserveBook,
+      getBook,
+      getCategories,
+      getSettings,
     } = this
     return (
       <Provider
@@ -188,6 +209,8 @@ class AuthContexProvider extends Component {
           show,
           modalTitle,
           modalBody,
+          MaxDays,
+          MaxBooks,
           loginUser,
           updateState,
           identifyUser,
@@ -207,6 +230,9 @@ class AuthContexProvider extends Component {
           getBook,
           patchBook,
           deleteBook,
+          reserveBook,
+          getCategories,
+          getSettings
         }}
       >
         {this.props.children}
