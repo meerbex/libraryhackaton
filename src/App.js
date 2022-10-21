@@ -1,15 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import io from 'socket.io-client';
 import Routers from './routes'
+import { AuthContext } from "./contexts/AuthContext";
+
 import { setAuthToken } from './helpers/setAuthToken'
-const socket = io("https://hackaton-round2.herokuapp.com/");
+// const socket = io("https://hackaton-round2.herokuapp.com/");
+import Modal from 'react-bootstrap/Modal';
 
 function App() {
-  const [isConnected, setIsConnected] = useState(socket.connected);
-  const [lastPong, setLastPong] = useState(null);
+  // const [isConnected, setIsConnected] = useState(socket.connected);
+  // const [lastPong, setLastPong] = useState(null);
 
   // useEffect(() => {
   //   socket.on('connect', () => {
@@ -28,6 +31,7 @@ function App() {
   //   };
   // }, []);
 
+  const context = React.useContext(AuthContext);
   //check jwt token
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,11 +39,25 @@ function App() {
       setAuthToken(token);
     }
   }, [])
-  
+
 
   return (
     <div className="App">
       <Routers />
+
+      <Modal show={context.show} >
+        <Modal.Header >
+          <Modal.Title>{context.modalTitle}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{context.modalBody}</Modal.Body>
+        <Modal.Footer>
+          <a className="btn btn-secondary" onClick={() => context.updateState('show', false)}>
+            Close
+          </a>
+
+        </Modal.Footer>
+      </Modal>
+
     </div>
   );
 }
