@@ -124,7 +124,7 @@ export async function patchBook(id, data) {
 
 export async function getBook({ bookId }) {
   const path = `/books/${bookId}`;
-  const withCredentials = true;
+  const withCredentials = false;
   const book = await _getData(path, withCredentials);
   return book;
 }
@@ -141,7 +141,7 @@ export async function reserveBook({ bookId, endTime }) {
 export async function getBooks(params={"search":'ewrw'}) {
   let queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
   const path = `/books?${queryString}`;
-  const withCredentials = true;
+  const withCredentials = false;
   const book = await _getData(path, withCredentials);
   return book;
 }

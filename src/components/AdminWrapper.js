@@ -38,9 +38,7 @@ const AdminWrapper = ({ component: Component, ...rest }) => {
               </div>
             </div>
             <div className="col-lg-9">
-            <div className="share-thinking-title" style={{marginTop:30}}>
-              <h4 className="title">{title?title:'Dashboard'}</h4>
-            </div>
+            
               <div className="write-content-box">
                 <Component/>
               </div>
