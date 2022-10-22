@@ -72,9 +72,7 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
               }
               
               <div className="title-write">
-              <a href="/pending_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги админ</a>
-                  <a href="#!" onClick={()=>context.logout()}><i className="fa fa-fw fa-bar-chart mr-1"></i>Выйти</a>
-              <a href="#!" onClick={() => context.logout()}><i className="fa fa-sign-out mx-2"></i>Выйти</a>
+                <a href="#!" onClick={() => context.logout()}><i className="fa fa-sign-out mx-2"></i>Выйти</a>
               </div>
               
             </div>
