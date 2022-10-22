@@ -8,7 +8,7 @@ export const Search = () => {
 
   return (
 
-    <div className="col-xxl-6 col-lg-5 d-none d-lg-block">
+    <div className="col-xxl-6 col-lg-5 my-5">
       <form action="/search">
         <div className="input-group ">
           <input

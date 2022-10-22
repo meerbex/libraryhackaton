@@ -304,7 +304,14 @@ code {
 .stars {
     color:#FEB129
 }
-
+header {
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+}
+@media (max-width:768px) {
+    .mobile_search .d-none{
+        display: block !important;
+    }
+}
 .card-product img{
     height: 350px;
     object-fit: contain;

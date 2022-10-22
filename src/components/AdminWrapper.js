@@ -24,7 +24,7 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
         <div className="container">
           <div className="row">
             
-            <div className="col-lg-3 card">
+            <div className="col-lg-3 card my-8">
 
             
               <div className="title-write">

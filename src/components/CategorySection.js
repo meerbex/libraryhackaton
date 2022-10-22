@@ -22,9 +22,9 @@ export const CategorySection = () => {
             <h3 className="mb-0">Жанры</h3>
           </div>
         </div>
-        <div className="category-slider " style={{display:'flex'}}>
+        <div className="category-slider " style={{display:'flex',overflow:'auto'}}>
           {
-            categories.slice(0,4).map(element => {
+            categories.map(element => {
               return (
                 <div className="item mx-1">
                   {" "}

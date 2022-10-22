@@ -50,7 +50,7 @@ export default function BookCard({ book }) {
           </div>
           <div>
             <span className="tag">
-              {book?.category}
+              {book?.category.substr(0,15)}
             </span>
           </div>
           <br />
