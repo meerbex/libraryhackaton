@@ -59,7 +59,22 @@ class ProfilePageAnother extends Component {
                                   <div className="card">
                                       <div className="card-body">
                                           <div className="e-profile">
-                                          <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">{this.state.username}</h4>
+                                          <div className="row">
+                                                  <div className="col-md-6 col-sm-auto mb-3">
+                                                    <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">{this.state.username}</h4>
+                                                  </div>
+                                                  <div className="col-md-6 col-sm-auto mb-3">
+                                                      <div className="mx-auto" style={{ width: '140px', textAlign: 'center' }}>
+                                                          {this.state.avatarUrl?
+                                                            <img src={this.state.avatarUrl} alt="" width='100px' style={{borderRadius: 50, height:100, objectFit:'cover'}}/>
+                                                                :
+                                                            <img src="https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg" alt="" width='100px' style={{borderRadius: 50, height:100, objectFit:'cover'}}/>
+                                                            
+                                                            }
+                                                      </div>
+                                                  </div>
+
+                                              </div>
                                               <div className="tab-content pt-3">
                                                   <div className="tab-pane active">
                                                       <form className="form" >
