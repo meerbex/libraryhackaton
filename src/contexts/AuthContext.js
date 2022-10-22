@@ -17,6 +17,7 @@ import {
   getSettings as getSettingsApi,
   getBooks as getBooksApi,
   reserveBook as reserveBookApi,
+  confirmReserve as confirmReserveApi,
   getUserNotifications as getUserNotificationsApi,
   recoverPassword as recoverPassordApi,
   deleteBook as deleteBookApi
@@ -101,6 +102,8 @@ class AuthContexProvider extends Component {
 
   logout = async () => {
     await logoutApi()
+    localStorage.removeItem("token");
+    window.location.href="/login"
     // history.push('/users/login')
   }
 
@@ -164,6 +167,11 @@ class AuthContexProvider extends Component {
     return await getBooksApi(params)
   }
 
+  confirmReserve = async (id) => {
+    return await confirmReserveApi(id)
+  }
+
+  
   deleteBook = async (bookId) => {
     return await deleteBookApi(bookId)
   }
@@ -188,13 +196,14 @@ class AuthContexProvider extends Component {
       doesCurrentUserOwnAnswer,
       changePassword,
       getBooks,
+      reserveBook,
       getCurrentUser,
       getCurrentUserNotifications,
       recoverPassword,
       postBook,
       patchBook,
       deleteBook,
-      reserveBook,
+      confirmReserve,
       getBook,
       getCategories,
       getSettings,
@@ -216,6 +225,7 @@ class AuthContexProvider extends Component {
           sendCode,
           logout,
           getBooks,
+          reserveBook,
           isUserIdentified,
           doesCurrentUserOwnQuestion,
           doesCurrentUserOwnComment,
@@ -228,7 +238,7 @@ class AuthContexProvider extends Component {
           getBook,
           patchBook,
           deleteBook,
-          reserveBook,
+          confirmReserve,
           getCategories,
           getSettings
         }}

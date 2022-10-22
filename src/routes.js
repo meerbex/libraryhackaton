@@ -126,7 +126,6 @@ function Routes() {
                         exact
                         path="/pending_books_admin"
                         component={PendingBooksAdmin}
-                    
                     />
 
                     <RouteGuard

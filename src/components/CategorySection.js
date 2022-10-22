@@ -24,7 +24,7 @@ export const CategorySection = () => {
         </div>
         <div className="category-slider " style={{display:'flex'}}>
           {
-            categories.map(element => {
+            categories.slice(0,4).map(element => {
               return (
                 <div className="item mx-1">
                   {" "}

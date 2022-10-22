@@ -4,24 +4,26 @@ import { setAuthToken } from "../helpers/setAuthToken"
 import { AuthContext } from "../contexts/AuthContext";
 import { Redirect, Route } from 'react-router-dom';
 
-function Login() {
+function  Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const context = React.useContext(AuthContext);
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     //reqres registered sample user
     
     // console.log(loginPayload)
 
-
+    
     try {
-      context.loginUser({ email, password })
+      const result = await context.loginUser({ email, password })
+      console.log('result', result)
       // history.push("/")
-      window.location.href = '/';
+      window.location.href = '/profile';
 
       // return (<Redirect to={{ pathname: '/' }} />)
     } catch (err) {
+      setErrorMessage('Неправильный логин или пароль')
       console.log("Something went wrong", err);
     }
 
@@ -35,6 +37,9 @@ function Login() {
         <div className="row ">
           <div className="col-lg-6 m-auto mt-5">
             <div className="login-content">
+              {errorMessage.length ?
+                <div className="alert alert-danger"> {errorMessage} </div> : ""
+              }
               <div className="login-header mb-4">
                 <h5>LOG IN YOUR ACCOUNT</h5>
               </div>

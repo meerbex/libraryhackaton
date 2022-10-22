@@ -6,6 +6,17 @@ export default function PendingBooksAdmin() {
   const context = React.useContext(AuthContext);
 
   const [books, setBooks] = useState([])
+  const [confirmed, setConfirmed] = useState(false)
+  
+  const confirmReserve = async (id) => {
+    var comingConfirm = await context.confirmReserve(id);
+    if (comingConfirm){
+      context.updateState('show', true)
+      context.updateState('modalBody', 'Вы подтвердили успешно ')
+    }
+    setConfirmed(!confirmed)
+  }
+
   useEffect(() => {
 
     async function fetchMyAPI() {
@@ -14,7 +25,7 @@ export default function PendingBooksAdmin() {
     }
 
     fetchMyAPI()
-  }, [])
+  }, [confirmed])
 
   console.log(books);
   return (
@@ -40,6 +51,7 @@ export default function PendingBooksAdmin() {
                   <th>Description</th>
                   <th>Category</th>
                   <th>User</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,7 +61,8 @@ export default function PendingBooksAdmin() {
                   <td>{book.book.title}</td>
                   <td>{book.book.description?.substring(0, 200)}...</td>
                   <td>{book.book.category}</td>
-                  <td><a href={`/profile/${book.user.id}`}>{book.user.username}</a></td>
+                    <td><a href={`/profile/${book.user.id}`}>{book.user.username}</a></td>
+                    <td><a onClick={() => confirmReserve(book.id)} className="btn btn-success" href="#!">Подтвердить</a></td>
                 </tr>
                 ))}
               </tbody>
