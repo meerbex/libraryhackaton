@@ -58,26 +58,23 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
                   <a href="/my_books"><i className="fa fa-book  mx-2"></i>Книги</a>
                 </div>
                 <div className="title-write">
-                  <a href="/borrowed_books_admin"><i className="fa fa-check-circle mx-2"></i>Заимствованные книги админ</a>
+                  <a href="/borrowed_books_admin"><i className="fa fa-check-circle mx-2"></i>Заимствованные книги </a>
                 </div>
                 <div className="title-write">
-                  <a href="/expired_books_admin"><i className="fa fa-exclamation-triangle mx-2"></i>Просроченные книги админ</a>
+                  <a href="/expired_books_admin"><i className="fa fa-exclamation-triangle mx-2"></i>Просроченные книги </a>
                 </div>
                 <div className="title-write">
-                  <a href="/pending_books_admin"><i className="fa fa-bookmark mx-2"></i>Заброннированные книги админ</a>
+                  <a href="/pending_books_admin"><i className="fa fa-bookmark mx-2"></i>Заброннированные книги </a>
                 </div>
               </>
               :
               <></>
               }
-              
               <div className="title-write">
                 <a href="#!" onClick={() => context.logout()}><i className="fa fa-sign-out mx-2"></i>Выйти</a>
               </div>
-              
             </div>
             <div className="col-lg-9">
-            
               <div className="write-content-box">
                 <Component/>
               </div>
