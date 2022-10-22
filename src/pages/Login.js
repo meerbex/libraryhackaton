@@ -32,7 +32,7 @@ function  Login() {
 
   return (
     
-    <div className="login-register-page-area ">
+    <div className="login-register-page-area my-8">
       <div className="container">
         <div className="row ">
           <div className="col-lg-6 m-auto mt-5">
@@ -41,7 +41,7 @@ function  Login() {
                 <div className="alert alert-danger"> {errorMessage} </div> : ""
               }
               <div className="login-header mb-4">
-                <h5>LOG IN YOUR ACCOUNT</h5>
+                <h5>Вход</h5>
               </div>
 
               
@@ -54,20 +54,20 @@ function  Login() {
                 }}
               >
                 <input type="text" onChange={e=>setEmail(e.target.value)} id="email" name="email" placeholder="Email" />
-                <input type="password" onChange={e => setPassword(e.target.value)} id="password" name="password" placeholder="Password" />
+                <input type="password" onChange={e => setPassword(e.target.value)} id="password" name="password" placeholder="Пароль" />
                 <div className="remember-forget-wrap mb-30">
                   {/* <div className="remember-wrap">
                     <input type="checkbox" />
                     <p>Remember</p>
                     <span className="checkmark" />
                   </div> */}
-                  <div className="forget-wrap">
+                  {/* <div className="forget-wrap">
                     <a href="#">Forgot your password?</a>
-                  </div>
+                  </div> */}
                 </div>
-                <button type="submit" className="btn btn-primary btn-large">Log in</button>
+                <button type="submit" className="btn btn-primary btn-large">Вход</button>
                 <div className="member-register mt-5">
-                  <p> Not a member? <a href="/register"> Register now</a></p>
+                  <p> Нет аккаунта? <a href="/register"> Регистрация</a></p>
                 </div>
               </form>
             </div>

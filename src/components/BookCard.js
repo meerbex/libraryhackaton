@@ -92,7 +92,7 @@ export default function BookCard({ book }) {
           </div>
           <div className="d-grid mt-2">
             {book?.quantity ?
-              <a href="#!" onClick={() => Book(book?.id)}  className="btn btn-primary ">
+              <button href="#!" disabled={book?.userReservedBook ? true : false} onClick={() => Book(book?.id)}  className="btn btn-primary ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={16}
@@ -108,8 +108,8 @@ export default function BookCard({ book }) {
                   <line x1={12} y1={5} x2={12} y2={19} />
                   <line x1={5} y1={12} x2={19} y2={12} />
                 </svg>{" "}
-                Забронировать{" "}
-              </a>
+                {book?.userReservedBook ? "Забронирован" :"Забронировать"}{" "}
+              </button>
               :
 
 

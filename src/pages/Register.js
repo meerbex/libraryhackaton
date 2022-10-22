@@ -52,7 +52,7 @@ function Login() {
 
   return (
     
-    <div className="login-register-page-area section-space--ptb_80">
+    <div className="login-register-page-area section-space--ptb_80 my-8">
       <div className="container">
         <div className="row ">
           <div className="col-lg-6 m-auto">
@@ -64,9 +64,8 @@ function Login() {
               
               {!sent?
               <>
-                <div className="login-header mb-40">
-                  <h3 className="mb-2">Register</h3>
-                  <h5>Become a member</h5>
+                <div className="login-header mb-40" >
+                  <h3 className="mb-2">Регистрация</h3>
                 </div>
                 <form action="#"
                   onSubmit={(event) => {
@@ -74,15 +73,15 @@ function Login() {
                     handleSubmit();
                   }}
                 >
-                  <input type="text" name="name" onChange={e => setUsername(e.target.value)} placeholder="Username" />
-                  <input type="email" name="email" onChange={e => setEmail(e.target.value)} placeholder="Email Address" />
-                  <input type="password" onChange={e => setPassword(e.target.value)} placeholder="Password" />
+                  <input type="text" name="name" onChange={e => setUsername(e.target.value)} placeholder="Имя" />
+                  <input type="email" name="email" onChange={e => setEmail(e.target.value)} placeholder="Email" />
+                  <input type="password" onChange={e => setPassword(e.target.value)} placeholder="Пароль" />
                   
                   <div className="button-box mt-4">
-                    <button type="submit" className="btn btn-primary btn-large">Register Now</button>
+                    <button type="submit" className="btn btn-primary btn-large">Зарегистрироваться</button>
                   </div>
                   <div className="member-register mt-5">
-                    <p> A member? <a href="login"> Log in now</a></p>
+                    <p> Уже есть аккаунт? <a href="login"> Войти</a></p>
                   </div>
                 </form>
 

@@ -77,7 +77,7 @@ export default class ProfilePage extends Component {
                                                                   <span {...getRootProps()} className="btn btn-primary" type="button">
                                                                       <input  {...getInputProps()} />
                                                                         <i className="fa fa-fw fa-camera" />
-                                                                        <span>Change Photo</span>
+                                                                        <span>Изменить фото</span>
                                                                     </span>
                                                               )}
                                                           </Dropzone>
@@ -104,13 +104,13 @@ export default class ProfilePage extends Component {
                                                                   <div className="row">
                                                                       <div className="col">
                                                                           <div className="form-group">
-                                                                              <label>Full Name</label>
+                                                                              <label>Имя</label>
                                                                               <input className="form-control" onChange={e => this.setState({ username: e.target.value })}  type="text" name="name" placeholder="Имя" defaultValue={this.state.username} />
                                                                           </div>
                                                                       </div>
                                                                       <div className="col">
                                                                           <div className="form-group">
-                                                                              <label>Username</label>
+                                                                              <label>Никнейм</label>
                                                                               <input onChange={e => this.setState({ username: e.target.value })}  className="form-control" type="text" name="username" placeholder="username" defaultValue={this.state.username} />
                                                                           </div>
                                                                       </div>

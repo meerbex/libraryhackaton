@@ -117,7 +117,7 @@ function Details() {
 
 
                     {book?.quantity ?
-                      <button onClick={() => Book(book?.id)} type="button" className="btn btn-primary d-flex justify-content-around align-items-center">
+                      <button onClick={() => Book(book?.id)} type="button" disabled={book?.userReservedBook ? true : false} className="btn btn-primary d-flex justify-content-around align-items-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width={16}
@@ -133,7 +133,8 @@ function Details() {
                           <line x1={12} y1={5} x2={12} y2={19} />
                           <line x1={5} y1={12} x2={19} y2={12} />
                         </svg>
-                        Забронировать
+                        {book?.userReservedBook ? "Уже забронирован вами" :"Забронировать"}
+                        
                       </button>
                       :
                       <button onClick={() => Book(book?.id)} type="button" disabled className="btn btn-secondary d-flex justify-content-around align-items-center">
