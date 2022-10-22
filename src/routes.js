@@ -27,6 +27,7 @@ import PendingBooks from "./pages/PendingBooks";
 import ExpiredBooksAdmin from "./pages/ExpiredBooksAdmin";
 import ProfilePageAnother from "./pages/ProfilePageAnother";
 import PendingBooksAdmin from "./pages/PendingBooksAdmin";
+import SettingsPage from "./pages/Settings";
 
 function Routes() {
     return (
@@ -126,6 +127,12 @@ function Routes() {
                         path="/pending_books_admin"
                         component={PendingBooksAdmin}
                     
+                    />
+
+                    <RouteGuard
+                        exact
+                        path="/settings"
+                        component={SettingsPage}
                     />
 
                     <RouteGuard

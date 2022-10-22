@@ -16,6 +16,9 @@ const AdminWrapper = ({ component: Component, ...rest }) => {
               <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Профиль</a>
               </div>
               <div className="title-write">
+              <a href="/settings"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Глобальные настройки</a>
+              </div>
+              <div className="title-write">
               <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
               </div>
               <div className="title-write">

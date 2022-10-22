@@ -201,6 +201,14 @@ export async function getSettings() {
   const book = await _getData(path, withCredentials);
   return book;
 }
+
+export async function patchSettings(body) {
+  const path = `/settings`;
+  const withCredentials = true;
+  const book = await _patchData(path, body, withCredentials);
+  return book;
+}
+
 export async function postQuestion ({ title, body }) {
   const path = '/questions';
   const withCredentials = true;
