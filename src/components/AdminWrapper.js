@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 
+import { AuthContext } from "../contexts/AuthContext";
 
-const AdminWrapper = ({ component: Component, ...rest }) => {
-  const { title } = rest
+const AdminWrapper =  ({ component: Component, ...rest }) => {
+  const context = React.useContext(AuthContext);
+  const [user, setUser] = useState({})
+  useEffect( () => {
+    async function fetchMyAPI() {
+      const cominguser = await context.getCurrentUser();
+      setUser(cominguser)
+      console.log("user", user)
+    }
+    fetchMyAPI();
+    
+  },[])
+  
+  // console.log(user)
+  // this.setState(user)
+  // const { title } = rest
   return (
       
       <div className=" " style={{marginBottom:30}}>
@@ -15,27 +30,46 @@ const AdminWrapper = ({ component: Component, ...rest }) => {
               <div className="title-write">
               <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Профиль</a>
               </div>
-              <div className="title-write">
-              <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_borrowed_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_expired_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_pending_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/borrowed_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги админ</a>
-              </div>
-              <div className="title-write">
-              <a href="/expired_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги админ</a>
-              </div>
-              <div className="title-write">
-              <a href="/pending_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги админ</a>
-              </div>
+              
+              
+
+              {user?.role=='user'?
+              
+              <>
+                <div className="title-write">
+                  <a href="/my_borrowed_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги</a>
+                </div>
+                <div className="title-write">
+                  <a href="/my_expired_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги</a>
+                </div>
+                <div className="title-write">
+                  <a href="/my_pending_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги</a>
+                </div>
+              </>
+              :
+              <></>
+              }
+
+              {user?.role=='admin'?
+              
+              <>
+                <div className="title-write">
+                  <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
+                </div>
+                <div className="title-write">
+                  <a href="/borrowed_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги админ</a>
+                </div>
+                <div className="title-write">
+                  <a href="/expired_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги админ</a>
+                </div>
+                <div className="title-write">
+                  <a href="/pending_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги админ</a>
+                </div>
+              </>
+              :
+              <></>
+              }
+              
             </div>
             <div className="col-lg-9">
             

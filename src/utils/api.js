@@ -146,6 +146,15 @@ export async function getBooks(params={"search":'ewrw'}) {
   return book;
 }
 
+export async function confirmReserve(id) {
+  const path = `/books/reservations/${id}/confirm`;
+  const withCredentials = true;
+  const bookId = await _patchData(path, {}, withCredentials);
+  return bookId;
+}
+
+
+
 export async function getMyBorrowedBooks() {
   const path = `/books/owned?getMyBooks=true`;
   const withCredentials = true;
