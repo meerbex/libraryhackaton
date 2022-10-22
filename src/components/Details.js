@@ -8,6 +8,7 @@ function Details() {
   const params = useParams();
   const context = React.useContext(AuthContext);
   const [book, setBook] = useState({})
+  const [just, setJust] = useState(false)
   const Book = async (id) => {
     const days = parseInt(context.maxDays);
 
@@ -20,7 +21,7 @@ function Details() {
     var date = new Date();
     var dates = date.addDays(days-1 )
 
-    
+    setJust(!just)
     try {
       const reserved = await context.reserveBook(
         {
@@ -28,6 +29,7 @@ function Details() {
           "endTime": dates
         }
       )
+      
       context.updateState('show', true)
       context.updateState('modalBody', 'Вы Успешно забронировали книку " '+ book.title+'"')
 
@@ -58,7 +60,7 @@ function Details() {
     }
     fetchMyAPI()
 
-  }, [])
+  }, [just])
   return (
     <div>
       <section className="mt-8">
