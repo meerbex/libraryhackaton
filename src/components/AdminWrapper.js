@@ -28,7 +28,7 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
 
             
               <div className="title-write">
-              <a href="/profile"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Профиль</a>
+              <a href="/profile"> <i className="fa fa-user mx-2"></i>Профиль</a>
               </div>
               
               
@@ -37,13 +37,14 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
               
               <>
                 <div className="title-write">
-                  <a href="/my_borrowed_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги</a>
+                  
+                  <a href="/my_borrowed_books"><i className="fa fa-check-circle mx-2"></i>Заимствованные книги</a>
                 </div>
                 <div className="title-write">
-                  <a href="/my_expired_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги</a>
+                  <a href="/my_expired_books"><i className="fa fa-exclamation-triangle mx-2"></i>Просроченные книги</a>
                 </div>
                 <div className="title-write">
-                  <a href="/my_pending_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги</a>
+                  <a href="/my_pending_books"><i className="fa fa-bookmark mx-2"></i>Заброннированные книги</a>
                 </div>
               </>
               :
@@ -54,23 +55,23 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
               
               <>
                 <div className="title-write">
-                  <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
+                  <a href="/my_books"><i className="fa fa-book  mx-2"></i>Книги</a>
                 </div>
                 <div className="title-write">
-                  <a href="/borrowed_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги админ</a>
+                  <a href="/borrowed_books_admin"><i className="fa fa-check-circle mx-2"></i>Заимствованные книги админ</a>
                 </div>
                 <div className="title-write">
-                  <a href="/expired_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги админ</a>
+                  <a href="/expired_books_admin"><i className="fa fa-exclamation-triangle mx-2"></i>Просроченные книги админ</a>
                 </div>
                 <div className="title-write">
-                  <a href="/pending_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги админ</a>
+                  <a href="/pending_books_admin"><i className="fa fa-bookmark mx-2"></i>Заброннированные книги админ</a>
                 </div>
               </>
               :
               <></>
               }
               <div className="title-write">
-                  <a href="#!" onClick={()=>context.logout()}><i className="fa fa-fw fa-bar-chart mr-1"></i>Выйти</a>
+              <a href="#!" onClick={() => context.logout()}><i className="fa fa-sign-out mx-2"></i>Выйти</a>
               </div>
               
             </div>
