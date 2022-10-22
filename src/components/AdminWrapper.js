@@ -69,6 +69,9 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
               :
               <></>
               }
+              <div className="title-write">
+                  <a href="#!" onClick={()=>context.logout()}><i className="fa fa-fw fa-bar-chart mr-1"></i>Выйти</a>
+              </div>
               
             </div>
             <div className="col-lg-9">

@@ -102,6 +102,8 @@ class AuthContexProvider extends Component {
 
   logout = async () => {
     await logoutApi()
+    localStorage.removeItem("token");
+    window.location.href="/login"
     // history.push('/users/login')
   }
 
