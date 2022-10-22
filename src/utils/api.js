@@ -131,7 +131,7 @@ export async function patchUser(data) {
 
 export async function getBook({ bookId }) {
   const path = `/books/${bookId}`;
-  const withCredentials = false;
+  const withCredentials = localStorage.getItem("token") ? true : false;
   const book = await _getData(path, withCredentials);
   return book;
 }
@@ -148,7 +148,7 @@ export async function reserveBook({ bookId, endTime }) {
 export async function getBooks(params={"search":'ewrw'}) {
   let queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
   const path = `/books?${queryString}`;
-  const withCredentials = false;
+  const withCredentials = localStorage.getItem("token") ? true : false;
   const book = await _getData(path, withCredentials);
   return book;
 }

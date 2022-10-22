@@ -32,7 +32,7 @@ function  Login() {
 
   return (
     
-    <div className="login-register-page-area ">
+    <div className="login-register-page-area my-8">
       <div className="container">
         <div className="row ">
           <div className="col-lg-6 m-auto mt-5">
@@ -61,13 +61,13 @@ function  Login() {
                     <p>Remember</p>
                     <span className="checkmark" />
                   </div> */}
-                  <div className="forget-wrap">
+                  {/* <div className="forget-wrap">
                     <a href="#">Forgot your password?</a>
-                  </div>
+                  </div> */}
                 </div>
-                <button type="submit" className="btn btn-primary btn-large">Log in</button>
+                <button type="submit" className="btn btn-primary btn-large">Вход</button>
                 <div className="member-register mt-5">
-                  <p> Not a member? <a href="/register"> Register now</a></p>
+                  <p> Нет аккаунта? <a href="/register"> Регистрация</a></p>
                 </div>
               </form>
             </div>
