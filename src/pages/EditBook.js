@@ -1,5 +1,5 @@
 import React, { Component, useCallback } from 'react'
-import { EditorState } from 'draft-js';
+import { EditorState, ContentState, convertFromHTML } from 'draft-js';
 
 import { Editor } from 'react-draft-wysiwyg';
 import Dropzone from '../components/Dropzone';
@@ -16,18 +16,18 @@ class EditBook extends Component {
     super(props)
     this.state = {
       "title": "ыва ываываыва",
-      "description": "",
       "category": "clothess",
       "author": "einstein",
       "issuer": "Transworld",
       "quantity": 50,
       "imageUrl": "",
+      "description": "",
     }
 
     this.onEditorStateChange = (description) => {
-      this.setState({
-        description,
-      });
+      // this.setState({
+      //   description,
+      // });
     };
     this.onDropGallery = (files) => {
       files.map((file) => {
@@ -96,9 +96,17 @@ class EditBook extends Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
     if (id) {
-      console.log('dsadas')
-      const {description, updatedAt, createdAt, ...book} = await this.context.getBook({bookId: id})
+      const {updatedAt, createdAt, ...book} = await this.context.getBook({bookId: id})
       this.setState(book)
+      // this.setState(
+      //   {
+      //     description: EditorState.createWithContent(
+      //       ContentState.createFromBlockArray(
+      //         convertFromHTML(description)
+      //       )
+      //     )
+      //   }
+      // )
     }
   }
 
@@ -155,7 +163,7 @@ class EditBook extends Component {
                         <label>Описание</label>
                         
                         <div className="form-control" >
-                          <Editor
+                          {/* <Editor
 
                             localization={{
                               locale: 'ru',
@@ -164,7 +172,10 @@ class EditBook extends Component {
                             wrapperClassName="demo-wrapper"
                             editorClassName="demo-editor"
                             onEditorStateChange={this.onEditorStateChange}
-                          />
+                          /> */}
+                          <textarea className="form-control" onChange={(e) => this.setState({ description: e.target.value })} defaultValue={this.state.description} name="" id="" cols="30" rows="10">
+                            
+                          </textarea>
                         </div>
                       </div>
                     </div>

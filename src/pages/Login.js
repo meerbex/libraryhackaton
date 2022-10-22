@@ -41,7 +41,7 @@ function  Login() {
                 <div className="alert alert-danger"> {errorMessage} </div> : ""
               }
               <div className="login-header mb-4">
-                <h5>LOG IN YOUR ACCOUNT</h5>
+                <h5>Вход</h5>
               </div>
 
               
@@ -54,7 +54,7 @@ function  Login() {
                 }}
               >
                 <input type="text" onChange={e=>setEmail(e.target.value)} id="email" name="email" placeholder="Email" />
-                <input type="password" onChange={e => setPassword(e.target.value)} id="password" name="password" placeholder="Password" />
+                <input type="password" onChange={e => setPassword(e.target.value)} id="password" name="password" placeholder="Пароль" />
                 <div className="remember-forget-wrap mb-30">
                   {/* <div className="remember-wrap">
                     <input type="checkbox" />
