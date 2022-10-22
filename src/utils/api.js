@@ -122,6 +122,13 @@ export async function patchBook(id, data) {
   return bookId;
 }
 
+export async function patchUser(data) {
+  const path = `/users/me`;
+  const withCredentials = true;
+  const bookId = await _patchData(path, data, withCredentials);
+  return bookId;
+}
+
 export async function getBook({ bookId }) {
   const path = `/books/${bookId}`;
   const withCredentials = false;
@@ -210,6 +217,14 @@ export async function getSettings() {
   const book = await _getData(path, withCredentials);
   return book;
 }
+
+export async function patchSettings(body) {
+  const path = `/settings`;
+  const withCredentials = true;
+  const book = await _patchData(path, body, withCredentials);
+  return book;
+}
+
 export async function postQuestion ({ title, body }) {
   const path = '/questions';
   const withCredentials = true;
