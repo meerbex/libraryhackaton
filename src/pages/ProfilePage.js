@@ -126,7 +126,7 @@ export default class ProfilePage extends Component {
 
                                                                       <div className="col">
                                                                           <div className="form-group">
-                                                                              <label>Phone Number</label>
+                                                                              <label>Номер телефона</label>
                                                                               <input onChange={e => this.setState({ phoneNumber: e.target.value })}  className="form-control" type="text" placeholder="+996777104033" defaultValue={this.state.phoneNumber} />
                                                                           </div>
                                                                       </div>
@@ -135,7 +135,7 @@ export default class ProfilePage extends Component {
                                                                   <div className="row">
                                                                       <div className="col mb-3">
                                                                           <div className="form-group">
-                                                                              <label>About</label>
+                                                                              <label>Описание</label>
                                                                               <textarea className="form-control" onChange={e=>this.setState({about: e.target.value})} rows={5} placeholder="My Bio" defaultValue={this.state.about} />
                                                                           </div>
                                                                       </div>

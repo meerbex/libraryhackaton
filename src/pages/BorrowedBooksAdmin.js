@@ -25,21 +25,21 @@ export default function BorrowedBooksAdmin() {
             <div className="table-title">
               <div className="row">
                 <div className="col-sm-6">
-                  <h2>Manage <b>Books</b></h2>
+                  <h2>Книги </h2>
                 </div>
                 <div className="col-sm-6 text-right">
-                  <a href="/editBook" className="btn btn-success" ><i className="fa fa-plus"></i> Add New Book</a>
+                  {/* <a href="/editBook" className="btn btn-success" ><i className="fa fa-plus"></i> Добавить</a> */}
                 </div>
               </div>
             </div>
             <table className="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Photo</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                  <th>User</th>
+                  <th>Фото</th>
+                  <th>Название</th>
+                  <th>Описание</th>
+                  <th>Категория</th>
+                  <th>Пользователь</th>
                 </tr>
               </thead>
               <tbody>

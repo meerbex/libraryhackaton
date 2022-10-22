@@ -25,10 +25,10 @@ export default function ExpiredBooksAdmin() {
             <div className="table-title">
               <div className="row">
                 <div className="col-sm-6">
-                  <h2>Manage <b>Books</b></h2>
+                  <h2>Книги </h2>
                 </div>
                 <div className="col-sm-6 text-right">
-                  <a href="/editBook" className="btn btn-success" ><i className="fa fa-plus"></i> Add New Book</a>
+                  {/* <a href="/editBook" className="btn btn-success" ><i className="fa fa-plus"></i> Добавить</a> */}
                 </div>
               </div>
             </div>
