@@ -122,6 +122,13 @@ export async function patchBook(id, data) {
   return bookId;
 }
 
+export async function patchUser(data) {
+  const path = `/users/me`;
+  const withCredentials = true;
+  const bookId = await _patchData(path, data, withCredentials);
+  return bookId;
+}
+
 export async function getBook({ bookId }) {
   const path = `/books/${bookId}`;
   const withCredentials = true;

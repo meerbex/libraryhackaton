@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { AuthContext } from "../contexts/AuthContext";
 import Dropzone from 'react-dropzone'
+import { patchUser } from '../utils/api';
 
 export default class ProfilePage extends Component {
     static contextType = AuthContext;
@@ -14,7 +15,6 @@ export default class ProfilePage extends Component {
             "email": null,
             "authenticated": true,
             "avatarUrl": "https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg",
-            "phoneNumber": null,
             "about": ""
         }
 
@@ -26,22 +26,25 @@ export default class ProfilePage extends Component {
             };
             fetch("https://www.filestackapi.com/api/store/S3?key=AsPOvdHfS7OWcc6fZnBAQz", requestOptions)
                 .then(response => response.json())
-                .then(result => this.setState({ avatarUrl: result.url }))
+                .then(result => {
+                    console.log(result); 
+                    this.setState({ avatarUrl: result.url })
+                })
                 .catch(error => console.log('error', error));
             return files[0];
 
         };
+
+        this.handleSubmi = async (e) => {
+            e.preventDefault()
+            await patchUser(this.state);
+        }
     };
     
     async componentDidMount() {
         const user = await this.context.getCurrentUser()
         console.log(user)
         this.setState(user)
-    }
-    async handleSubmi() {
-        
-        // const user = await this.context.updateUser(this.state)
-        // this.setState(user)
     }
 
   render() {
@@ -58,11 +61,11 @@ export default class ProfilePage extends Component {
                                           <div className="e-profile">
                                               <div className="row">
                                                   <div className="col-md-6 col-sm-auto mb-3">
-                                                      <div className="mx-auto" style={{ width: '140px' }}>
+                                                      <div className="mx-auto" style={{ width: '140px', textAlign: 'center' }}>
                                                           {this.state.avatarUrl?
-                                                            <img src={this.state.avatarUrl} alt="" />
+                                                            <img src={this.state.avatarUrl} alt="" width='100px' style={{borderRadius: 50, height:100, objectFit:'cover'}}/>
                                                                 :
-                                                            <img src="https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg" alt="" />
+                                                            <img src="https://aui.atlassian.com/aui/latest/docs/images/avatar-person.svg" alt="" width='100px' style={{borderRadius: 50, height:100, objectFit:'cover'}}/>
                                                             
                                                             }
                                                           
@@ -95,7 +98,7 @@ export default class ProfilePage extends Component {
 
                                               <div className="tab-content pt-3">
                                                   <div className="tab-pane active">
-                                                      <form className="form" >
+                                                      <form className="form" onSubmit={this.handleSubmi}>
                                                           <div className="row">
                                                               <div className="col">
                                                                   <div className="row">
