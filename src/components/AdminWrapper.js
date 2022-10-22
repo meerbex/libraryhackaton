@@ -70,27 +70,7 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
               :
               <></>
               }
-              <div className="title-write">
-              <a href="/settings"> <i className="fa fa-fw fa-bar-chart mr-1"></i>Глобальные настройки</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_borrowed_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_expired_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/my_pending_books"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги</a>
-              </div>
-              <div className="title-write">
-              <a href="/borrowed_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заимствованные книги админ</a>
-              </div>
-              <div className="title-write">
-              <a href="/expired_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Просроченные книги админ</a>
-              </div>
+              
               <div className="title-write">
               <a href="/pending_books_admin"><i className="fa fa-fw fa-bar-chart mr-1"></i>Заброннированные книги админ</a>
                   <a href="#!" onClick={()=>context.logout()}><i className="fa fa-fw fa-bar-chart mr-1"></i>Выйти</a>

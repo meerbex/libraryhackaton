@@ -28,6 +28,7 @@ import ExpiredBooksAdmin from "./pages/ExpiredBooksAdmin";
 import ProfilePageAnother from "./pages/ProfilePageAnother";
 import PendingBooksAdmin from "./pages/PendingBooksAdmin";
 import SettingsPage from "./pages/Settings";
+import Wishlist from "./pages/Settings";
 
 function Routes() {
     return (
@@ -80,11 +81,22 @@ function Routes() {
                         component={ChatPage}
                     
                     />
+                    
+                    <RouteGuard
+                        path="/wishlist"
+                        component={Wishlist}
+                    />
                     <RouteGuard
                         exact
                         path="/my_books"
                         component={MyBooks}
                     
+                    />
+                
+                    <RouteGuard	
+                        exact	
+                        path="/settings"	
+                        component={SettingsPage}	
                     />
                     <RouteGuard
                         exact
