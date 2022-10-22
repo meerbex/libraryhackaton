@@ -29,6 +29,7 @@ import ProfilePageAnother from "./pages/ProfilePageAnother";
 import PendingBooksAdmin from "./pages/PendingBooksAdmin";
 import SettingsPage from "./pages/Settings";
 import Wishlist from "./pages/Settings";
+import BorrowedBooksAdmin from "./pages/BorrowedBooksAdmin";
 
 function Routes() {
     return (
@@ -129,7 +130,7 @@ function Routes() {
                     <RouteGuard
                         exact
                         path="/borrowed_books_admin"
-                        component={ExpiredBooksAdmin}
+                        component={BorrowedBooksAdmin}
                     
                     />
 
