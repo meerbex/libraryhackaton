@@ -67,7 +67,7 @@ const AdminWrapper =  ({ component: Component, ...rest }) => {
                   <a href="/pending_books_admin"><i className="fa fa-bookmark mx-2"></i>Заброннированные книги </a>
                 </div>
                 <div className="title-write">
-                  <a href="/pending_books_admin"><i className="fa fa-cogs mx-2"></i>Настройки </a>
+                  <a href="/settings"><i className="fa fa-cogs mx-2"></i>Настройки </a>
                 </div>
               </>
               :
