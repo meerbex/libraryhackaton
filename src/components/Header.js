@@ -82,7 +82,7 @@ class Header extends React.Component {
                 <div className="list-inline">
                   <div className="list-inline-item">
                     <a
-                      href="shop-wishlist.html"
+                      href="wishlist"
                       className="text-muted position-relative"
                     >
                       <svg

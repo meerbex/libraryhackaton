@@ -4,15 +4,23 @@ import { AuthContext } from "../contexts/AuthContext";
 export default function BookCard({ book }) {
   const context = React.useContext(AuthContext);
   const Book = async (id) => {
-    const date = new Date();
-    const days = context.maxDays;
-    date.setDate(date.getDate() + days);
-    date.setMinutes(date.getMinutes() - 10);
+    
+    const days = parseInt(context.maxDays);
+
+    Date.prototype.addDays = function (days) {
+      var date = new Date(this.valueOf());
+      date.setDate(date.getDate() + days);
+      return date;
+    }
+
+    var date = new Date();
+    var dates = date.addDays(days - 1)
+
     try {
       const reserved = await context.reserveBook(
         {
           "bookId": id,
-          "endTime": date
+          "endTime": dates
         }
       )
       context.updateState('show', true)
@@ -39,7 +47,7 @@ export default function BookCard({ book }) {
         <div className="card-body">
           <div className="text-center  position-relative ">
             {" "}
-            <a href={"details/" + book?.id}>
+            <a href={"/details/" + book?.id}>
               <img
                 src={book.imageUrl ? book.imageUrl : "https://i.postimg.cc/Wz2qvZtz/Whats-App-Image-2022-10-21-at-10-52-33-PM.jpg"}
                 alt={book.title ? book.title : ""}

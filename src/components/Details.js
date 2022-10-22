@@ -9,16 +9,23 @@ function Details() {
   const context = React.useContext(AuthContext);
   const [book, setBook] = useState({})
   const Book = async (id) => {
-    const date = new Date();
-    const days = context.maxDays;
-    console.log('days',days);
-    date.setDate(date.getDate() + days);
-    date.setMinutes(date.getMinutes() - 10);
+    const days = parseInt(context.maxDays);
+
+    Date.prototype.addDays = function (days) {
+      var date = new Date(this.valueOf());
+      date.setDate(date.getDate() + days);
+      return date;
+    }
+    
+    var date = new Date();
+    var dates = date.addDays(days-1 )
+
+    
     try {
       const reserved = await context.reserveBook(
         {
           "bookId": id,
-          "endTime": date
+          "endTime": dates
         }
       )
       context.updateState('show', true)
@@ -30,6 +37,10 @@ function Details() {
       if (err?.json?.error?.message == "allowed borrowing books exceeded") {
         context.updateState('show', true)
         context.updateState('modalBody', 'Вы повысили количество бронируемых книг. Вы не сможете бронировать больше ')
+      }
+      else if (err?.json?.error?.message == "you already borrowed the book") {
+        context.updateState('show', true)
+        context.updateState('modalBody', 'Вы уже бронировали эту книгу ')
       }
       else{
         context.updateState('show', true)
@@ -135,12 +146,12 @@ function Details() {
                 </div>
                 <br />
                 <div className="name">
-                  Доступно: 5 копий
+                  Доступно: {book.quantity} копий
                 </div>
                 {/* hr */}
                 <hr className="my-6" />
 
-                <div className="mt-8">
+                <div className="mt-8 d-none">
                   {/* dropdown */}
                   <div className="dropdown">
                     <a className="btn btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Поделиться </a>
@@ -175,12 +186,14 @@ function Details() {
                   {/* text */}
                   <h4 className="mb-1">Описание</h4>
                   <br />
-                  <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi, tellus iaculis urna bibendum in lacus, integer. Id imperdiet vitae varius sed magnis eu nisi nunc sit. Vel, varius habitant ornare ac rhoncus. Consequat risus facilisis ante ipsum netus risus adipiscing sagittis sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p className="mb-0">
+                    {book?.description}
+                  </p>
                 </div>
               </div>
 
               <div>
-                <div className="col-md-8">
+                <div className="col-md-8 d-none">
                   <div className="mb-10">
                     <div className="d-flex justify-content-between align-items-center mb-8">
                       <div>

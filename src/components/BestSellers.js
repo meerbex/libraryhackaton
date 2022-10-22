@@ -22,7 +22,7 @@ function BestSellers() {
       <div className="container">
         <div className="row">
           <div className="col-md-12 mb-6">
-            <h3 className="mb-0">Daily Best Sells</h3>
+            <h3 className="mb-0">Бестселлеры</h3>
           </div>
         </div>
         <div className="row row-cols-lg-4 row-cols-1 row-cols-md-2 g-4">

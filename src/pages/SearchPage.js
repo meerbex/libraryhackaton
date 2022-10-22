@@ -41,7 +41,7 @@ const SearchPage = (props) => {
 
   return (
 
-    <div>
+    <div className="my-8">
       <section>
         <div className="container">
           <div className="row">
