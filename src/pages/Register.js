@@ -89,7 +89,8 @@ function Login() {
               :
                 <>
                   <div className="login-header mb-40">
-                    <h3 className="mb-2">Confirm</h3>
+                    <h3 className="mb-2">Подтвердить</h3>
+                    <p className="mb-2">На ваш имейл должен прийти подтверждение</p>
                   </div>
                   <form action="#"
                     onSubmit={(event) => {
@@ -100,7 +101,7 @@ function Login() {
                     <input type="text" name="code" autoComplete={false} onChange={e => setCode(e.target.value)} placeholder="Код из email" />
 
                     <div className="button-box mt-4">
-                      <button type="submit" className="btn btn-primary btn-large">Confirm</button>
+                      <button type="submit" className="btn btn-primary btn-large">Подтвердить</button>
                     </div>
                     <div className="member-register mt-5">
                       <p > Не пришел email? <a href="#" onClick={() => handleSubmit()}>Отправить ещё раз</a></p>
