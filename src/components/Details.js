@@ -21,7 +21,7 @@ function Details() {
     var date = new Date();
     var dates = date.addDays(days-1 )
 
-    setJust(!just)
+    
     try {
       const reserved = await context.reserveBook(
         {
@@ -32,7 +32,7 @@ function Details() {
       
       context.updateState('show', true)
       context.updateState('modalBody', 'Вы Успешно забронировали книку " '+ book.title+'"')
-
+      setJust(!just)
 
       // return (<Redirect to={{ pathname: '/' }} />)
     } catch (err) {

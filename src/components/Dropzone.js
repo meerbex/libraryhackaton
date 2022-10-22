@@ -23,7 +23,7 @@ function Dropzone({ onDrop, accept, open, multiple }) {
             </p>
           )}
           <button type="button" onClick={open} className="btn">
-            Click to select files
+            кликните чтобы загрузить
           </button>
         </div>
       </div>
