@@ -28,7 +28,7 @@ import ExpiredBooksAdmin from "./pages/ExpiredBooksAdmin";
 import ProfilePageAnother from "./pages/ProfilePageAnother";
 import PendingBooksAdmin from "./pages/PendingBooksAdmin";
 import SettingsPage from "./pages/Settings";
-import Wishlist from "./pages/Settings";
+import Wishlist from "./pages/Wishlist";
 import BorrowedBooksAdmin from "./pages/BorrowedBooksAdmin";
 
 function Routes() {
